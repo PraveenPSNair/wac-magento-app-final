@@ -1,0 +1,50 @@
+[2025-09-17T06:12:55.365581+00:00] main.INFO: Source table payment_services_order_status_data_production_submitted_hash does not exist. Skipping data migration... [] []
+[2025-09-17T06:12:57.962737+00:00] main.ERROR: SQLSTATE[HY000]: General error: 1419 You do not have the SUPER privilege and binary logging is enabled (you *might* want to use the less safe log_bin_trust_function_creators variable), query was: CREATE TRIGGER trg_cataloginventory_stock_item_after_insert AFTER INSERT ON cataloginventory_stock_item FOR EACH ROW
+BEGIN
+INSERT IGNORE INTO `cataloginventory_stock_cl` (`entity_id`) VALUES (NEW.`product_id`);
+END
+#0 /var/www/magento2/vendor/magento/framework/DB/Statement/Pdo/Mysql.php(89): Magento\Framework\DB\Statement\Pdo\Mysql->tryExecute()
+#1 /var/www/magento2/vendor/magento/zend-db/library/Zend/Db/Statement.php(313): Magento\Framework\DB\Statement\Pdo\Mysql->_execute()
+#2 /var/www/magento2/vendor/magento/zend-db/library/Zend/Db/Adapter/Abstract.php(480): Zend_Db_Statement->execute()
+#3 /var/www/magento2/vendor/magento/zend-db/library/Zend/Db/Adapter/Pdo/Abstract.php(242): Zend_Db_Adapter_Abstract->query()
+#4 /var/www/magento2/vendor/magento/framework/DB/Adapter/Pdo/Mysql.php(641): Zend_Db_Adapter_Pdo_Abstract->query()
+#5 /var/www/magento2/vendor/magento/framework/DB/Adapter/Pdo/Mysql.php(667): Magento\Framework\DB\Adapter\Pdo\Mysql->Magento\Framework\DB\Adapter\Pdo\{closure}()
+#6 /var/www/magento2/vendor/magento/framework/DB/Adapter/Pdo/Mysql.php(641): Magento\Framework\DB\Adapter\Pdo\Mysql->performQuery()
+#7 /var/www/magento2/vendor/magento/framework/DB/Adapter/Pdo/Mysql.php(753): Magento\Framework\DB\Adapter\Pdo\Mysql->_query()
+#8 /var/www/magento2/generated/code/Magento/Framework/DB/Adapter/Pdo/Mysql/Interceptor.php(104): Magento\Framework\DB\Adapter\Pdo\Mysql->multiQuery()
+#9 /var/www/magento2/vendor/magento/framework/DB/Adapter/Pdo/Mysql.php(4195): Magento\Framework\DB\Adapter\Pdo\Mysql\Interceptor->multiQuery()
+#10 /var/www/magento2/generated/code/Magento/Framework/DB/Adapter/Pdo/Mysql/Interceptor.php(851): Magento\Framework\DB\Adapter\Pdo\Mysql->createTrigger()
+#11 /var/www/magento2/vendor/magento/framework/Mview/View/Subscription.php(193): Magento\Framework\DB\Adapter\Pdo\Mysql\Interceptor->createTrigger()
+#12 /var/www/magento2/vendor/magento/framework/Mview/View/Subscription.php(166): Magento\Framework\Mview\View\Subscription->saveTrigger()
+#13 /var/www/magento2/vendor/magento/framework/Mview/View.php(211): Magento\Framework\Mview\View\Subscription->create()
+#14 /var/www/magento2/generated/code/Magento/Framework/Mview/View/Interceptor.php(95): Magento\Framework\Mview\View->subscribe()
+#15 /var/www/magento2/vendor/magento/module-indexer/Model/Indexer.php(326): Magento\Framework\Mview\View\Interceptor->subscribe()
+#16 /var/www/magento2/vendor/magento/framework/Interception/Interceptor.php(58): Magento\Indexer\Model\Indexer->setScheduled()
+#17 /var/www/magento2/vendor/magento/framework/Interception/Interceptor.php(138): Magento\Indexer\Model\Indexer\Interceptor->___callParent()
+#18 /var/www/magento2/vendor/magento/module-data-exporter/Plugin/ForceExporterIndexerModeOnSchedule.php(53): Magento\Indexer\Model\Indexer\Interceptor->Magento\Framework\Interception\{closure}()
+#19 /var/www/magento2/vendor/magento/framework/Interception/Interceptor.php(135): Magento\DataExporter\Plugin\ForceExporterIndexerModeOnSchedule->aroundSetScheduled()
+#20 /var/www/magento2/vendor/magento/framework/Interception/Interceptor.php(153): Magento\Indexer\Model\Indexer\Interceptor->Magento\Framework\Interception\{closure}()
+#21 /var/www/magento2/generated/code/Magento/Indexer/Model/Indexer/Interceptor.php(167): Magento\Indexer\Model\Indexer\Interceptor->___callPlugins()
+#22 /var/www/magento2/vendor/magento/module-indexer/Model/Indexer/DependencyDecorator.php(201): Magento\Indexer\Model\Indexer\Interceptor->setScheduled()
+#23 /var/www/magento2/vendor/magento/framework/Interception/Interceptor.php(58): Magento\Indexer\Model\Indexer\DependencyDecorator->setScheduled()
+#24 /var/www/magento2/vendor/magento/framework/Interception/Interceptor.php(138): Magento\Indexer\Model\Indexer\DependencyDecorator\Interceptor->___callParent()
+#25 /var/www/magento2/vendor/magento/module-data-exporter/Plugin/ForceExporterIndexerModeOnSchedule.php(53): Magento\Indexer\Model\Indexer\DependencyDecorator\Interceptor->Magento\Framework\Interception\{closure}()
+#26 /var/www/magento2/vendor/magento/framework/Interception/Interceptor.php(135): Magento\DataExporter\Plugin\ForceExporterIndexerModeOnSchedule->aroundSetScheduled()
+#27 /var/www/magento2/vendor/magento/framework/Interception/Interceptor.php(153): Magento\Indexer\Model\Indexer\DependencyDecorator\Interceptor->Magento\Framework\Interception\{closure}()
+#28 /var/www/magento2/generated/code/Magento/Indexer/Model/Indexer/DependencyDecorator/Interceptor.php(149): Magento\Indexer\Model\Indexer\DependencyDecorator\Interceptor->___callPlugins()
+#29 /var/www/magento2/vendor/magento/module-indexer/Setup/Recurring.php(100): Magento\Indexer\Model\Indexer\DependencyDecorator\Interceptor->setScheduled()
+#30 /var/www/magento2/setup/src/Magento/Setup/Model/Installer.php(1171): Magento\Indexer\Setup\Recurring->install()
+#31 /var/www/magento2/setup/src/Magento/Setup/Model/Installer.php(972): Magento\Setup\Model\Installer->handleDBSchemaData()
+#32 [internal function]: Magento\Setup\Model\Installer->installSchema()
+#33 /var/www/magento2/setup/src/Magento/Setup/Model/Installer.php(422): call_user_func_array()
+#34 /var/www/magento2/setup/src/Magento/Setup/Console/Command/InstallCommand.php(239): Magento\Setup\Model\Installer->install()
+#35 /var/www/magento2/vendor/symfony/console/Command/Command.php(326): Magento\Setup\Console\Command\InstallCommand->execute()
+#36 /var/www/magento2/vendor/symfony/console/Application.php(1078): Symfony\Component\Console\Command\Command->run()
+#37 /var/www/magento2/vendor/symfony/console/Application.php(324): Symfony\Component\Console\Application->doRunCommand()
+#38 /var/www/magento2/vendor/magento/framework/Console/Cli.php(122): Symfony\Component\Console\Application->doRun()
+#39 /var/www/magento2/vendor/symfony/console/Application.php(175): Magento\Framework\Console\Cli->doRun()
+#40 /var/www/magento2/bin/magento(23): Symfony\Component\Console\Application->run()
+#41 {main} [] []
+[2025-09-17T06:57:10.570828+00:00] main.ERROR: Braintree\Configuration::merchantId needs to be set (or accessToken needs to be passed to Braintree\Gateway). [] []
+[2025-09-17T07:00:02.929493+00:00] main.INFO: Request token vaadufvtq0wblzj5dm9gs6dra9nb1ujw was exchanged to obtain access token for consumer 1 [] []
+[2025-09-17T07:00:03.459079+00:00] main.WARNING: Subscription for MBI service has been failed. An error occurred during token exchange: {"message":"Too many requests"}. Content-Type:  [] []
