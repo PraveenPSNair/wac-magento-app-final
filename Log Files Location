@@ -1,0 +1,20 @@
+Log Files Location
+Inside container:
+
+text
+# Nginx Logs:
+/var/log/nginx/nginx-access.log     # Access logs
+/var/log/nginx/nginx-error.log      # Error logs
+
+# PHP-FPM Logs:
+/var/log/php/php-fpm.log            # PHP-FPM logs
+/var/log/php/php-fpm-error.log      # PHP errors
+
+# Supervisor Logs:
+/var/log/supervisor/supervisord.log # Supervisor logs
+
+# Magento Logs:
+/var/www/html/magento/var/log              # Magento application logs
+/var/www/html/magento/var/log/system.log    # System logs
+/var/www/html/magento/var/log/exception.log # Exceptions
+/var/www/html/magento/var/logdebug.log     # Debug logs
